@@ -118,7 +118,7 @@ for thisThis in range(rangeLimit):
     numberX = thingyArray.index(max(thingyArray))
     if copyOfEmoteList[numberX] != ' ' or copyOfEmoteList[numberX] != '':
         highestThreeName.append(copyOfEmoteList[numberX])
-        highestThree.append(thingyArray[numberX])
+        highestThree.append(thingyArray[numberX] / 4)
     del thingyArray[numberX]
     del copyOfEmoteList[numberX]
 makePieChart(xArg1 = highestThree, yArg1 = highestThreeName)

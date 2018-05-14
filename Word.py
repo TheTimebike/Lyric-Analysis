@@ -65,7 +65,7 @@ def makeChart(xArg1, yArg1):
     plt.bar(y_pos, performance, align='center', alpha=0.5)
     plt.xticks(y_pos, objects)
     plt.title('Word Frequency')
-    pylab.savefig('EmoteGraph.png')
+    pylab.savefig('Graph.png')
     plt.gcf().clear()
 
 def makePieChart(xArg1, yArg1):

@@ -121,7 +121,11 @@ for thisThis in range(rangeLimit):
         highestThree.append(thingyArray[numberX] / 4)
     del thingyArray[numberX]
     del copyOfEmoteList[numberX]
-makePieChart(xArg1 = highestThree, yArg1 = highestThreeName)
 makeChart(xArg1 = highestThree, yArg1 = highestThreeName)
+
+highestThreeName.append('Other')
+highestThree.append(sum(thingyArray) / 4)
+
+makePieChart(xArg1 = highestThree, yArg1 = highestThreeName)
 
 input('Press enter to leave')

@@ -1,4 +1,4 @@
-wordList = open('./Lyrics', 'r').readlines()
+wordList = open('./Lyrics.txt', 'r').readlines()
 newWord = []
 for word in wordList:
     if word.lower().endswith('\n'):

@@ -1,0 +1,1 @@
+Copy the lyrics into a document called "Lyrics.txt", then run the Format.py file, this will create a new file called NewLyrics.txt with the lyrics in that the program can use. Load up word.py and select NewLyrics to be analysed. ( No need for the file extention ). Use the recommended settings that it tells you to. It will generate a pie chart and a graph for the lyrics.

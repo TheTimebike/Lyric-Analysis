@@ -1,0 +1,1 @@
+To make a preset with words, create a document and put in the words that you want the program to whitelist. Put a space inbetween each word, do not use any punctuation or capitals in the document. This also works for single letter words, such as vowels, but you will have to tell the program to not split the file (option in Word.py)

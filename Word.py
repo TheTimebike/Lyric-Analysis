@@ -51,7 +51,6 @@ for word in wordList2:
         newWord.append(str(word)[:-2])
     else:
         newWord.append(str(word))
-f = open('./NewLyrics.txt', 'w+')
 wordList = ' '.join(newWord).lower().replace('\n', '').replace('!', '').replace('(', '').replace(')', '').replace('.', '').replace(',', '').replace('\'', '').replace('\"', '').split(' ')
 
 while True:

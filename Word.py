@@ -5,7 +5,6 @@ import matplotlib.pyplot as plt
 saidList, totalList = [], []
 dualWord, dualNum = [], []
 limit = False
-bannedLetters = [',', '.', '\"', '\'']
 while True:
     userInput = input('What file would you like to analyse? ')
     if os.path.isfile('./{0}.txt'.format(userInput)):
@@ -46,15 +45,25 @@ while True:
     else:
         print('Unexpected Input')
 
-wordList = []
+newWord = []
 for word in wordList2:
-    for letter in bannedLetters:
-        if letter in word:
-            wordList.append(word.replace(letter, ''))
-        elif letter == word:
-            pass    
-        else:
-            wordList.append(word)
+    if word.lower().endswith('\n'):
+        newWord.append(str(word)[:-2])
+    else:
+        newWord.append(str(word))
+f = open('./NewLyrics.txt', 'w+')
+wordList = ' '.join(newWord).lower().replace('\n', '').replace('!', '').replace('(', '').replace(')', '').replace('.', '').replace(',', '').replace('\'', '').replace('\"', '').split(' ')
+
+while True:
+    userInput5 = input('Include other words in pie chart? Y/N (Recommended yes) ')
+    if userInput5.lower() == 'y':
+        doThis = True
+        break
+    elif userInput5.lower() == 'n':#
+        doThis = False
+        break
+    else:
+        print('Unexpected Input')
 
 def makeChart(xArg1, yArg1):
     
@@ -87,16 +96,17 @@ for word in wordList:
         saidList.append(word)
         saidList.append(1)
 
-
 if not limit:
     f = open('./DataDump.txt', 'w+')
     for x in range(len(saidList)):
-        if (x % 2 == 0):
+        if (x % 2 == 0) and saidList[x] != '':
             f.write(str(saidList[x]) + ' has a point total of ' + str(saidList[x + 1]) + '\n')
             totalList.append(saidList[x + 1])
             dualWord.append(saidList[x])
             dualNum.append(saidList[x + 1])
     f.close()
+
+
 if limit:
     f = open('./DataDump.txt', 'w+')    
     for x in range(len(saidList)):
@@ -116,15 +126,16 @@ else:
 highestThree, highestThreeName, emoteArray, copyOfEmoteList, thingyArray = [], [], [], list(dualWord), list(dualNum)
 for thisThis in range(rangeLimit):
     numberX = thingyArray.index(max(thingyArray))
-    if copyOfEmoteList[numberX] != ' ' or copyOfEmoteList[numberX] != '':
+    if copyOfEmoteList[numberX] != ' ' or copyOfEmoteList[numberX] != '' or len(copyOfEmoteList[numberX]) > 2:
         highestThreeName.append(copyOfEmoteList[numberX])
         highestThree.append(thingyArray[numberX] / 4)
     del thingyArray[numberX]
     del copyOfEmoteList[numberX]
 makeChart(xArg1 = highestThree, yArg1 = highestThreeName)
 
-highestThreeName.append('Other')
-highestThree.append(sum(thingyArray) / 4)
+if doThis:
+    highestThreeName.append('Other')
+    highestThree.append(sum(thingyArray) / 4)
 
 makePieChart(xArg1 = highestThree, yArg1 = highestThreeName)
 
